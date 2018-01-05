@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//1to3.top">
-  <title>开通博客第一天，欢迎来玩啊！ | MD-blog</title>
+  <title>字符串编解码问题 | MD-blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="this is my micro blog">
+  <meta name="description" content="了解字符串的编解码方式，在内存操作和网络I/O中都有可能用到">
+<meta name="keywords" content="编码,解码,字符串，内存操作">
 <meta property="og:type" content="article">
-<meta property="og:title" content="开通博客第一天，欢迎来玩啊！">
-<meta property="og:url" content="//1to3.top/2017/12/08/article-title/index.html">
+<meta property="og:title" content="字符串编解码问题">
+<meta property="og:url" content="//1to3.top/2018/01/05/字符串编解码问题/index.html">
 <meta property="og:site_name" content="MD-blog">
-<meta property="og:description" content="this is my micro blog">
-<meta property="og:updated_time" content="2017-12-10T01:59:14.453Z">
+<meta property="og:description" content="了解字符串的编解码方式，在内存操作和网络I/O中都有可能用到">
+<meta property="og:updated_time" content="2018-01-05T13:56:51.451Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="开通博客第一天，欢迎来玩啊！">
-<meta name="twitter:description" content="this is my micro blog">
+<meta name="twitter:title" content="字符串编解码问题">
+<meta name="twitter:description" content="了解字符串的编解码方式，在内存操作和网络I/O中都有可能用到">
   
     <link rel="alternative" href="/atom.xml" title="MD-blog" type="application/atom+xml">
   
@@ -179,27 +180,38 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-article-title" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-字符串编解码问题" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      开通博客第一天，欢迎来玩啊！
+      字符串编解码问题
     </h1>
   
 
         
-        <a href="/2017/12/08/article-title/" class="archive-article-date">
-  	<time datetime="2017-12-08T15:44:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-08</time>
+        <a href="/2018/01/05/字符串编解码问题/" class="archive-article-date">
+  	<time datetime="2018-01-05T12:57:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-05</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="https://www.appinn.com/markdown/basic.html" target="_blank" rel="noopener">this is my micro blog</a></p>
+        <p>字符串编解码代码：</p>
+<pre><code>&gt; 1.  String s = &quot;要被编码的字符串&quot;;
+&gt; 2.  //通过getByte（）方法进行编码，并制定编码格式
+&gt; 3.  byte[] b = s.getBytes(&quot;UTF-8&quot;);
+&gt; 4.  //通过String（byte[] byte, Charset charset)进行解码成字符串
+&gt; 5.  String n = new String(b,&quot;UTF-8&quot;);
+</code></pre><p>char[]和byte[]的编解码：</p>
+<pre><code>&gt;1. Charset charset = Charset.foName(&quot;UTF-8&quot;);
+&gt;1. //Charset的encode与decode方法
+&gt;1. ByteBuffer byteBuffer = charset.encode(&quot;string&quot;);
+&gt;1. CharBuffer charBuffer = charset.decode(byteBuffer);
+</code></pre><p><strong>参考文献</strong>：<br> &emsp;&emsp;深入分析Java Web技术内幕   许令波著 电子工业出版社</p>
 
       
 
@@ -239,7 +251,37 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">编码</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">解码</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">字符串，内存操作</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Hexo//" class="article-tag-list-link color5">Hexo</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -289,7 +331,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://1to3.top/2017/12/08/article-title/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://1to3.top/2018/01/05/字符串编解码问题/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -303,18 +345,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2017/12/26/model-article/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          这是一篇模板文章
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/12/08/virtualbox q1/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">VirtualBox COM对象获取失败解决方法</div>
+    <a href="/2017/12/26/model-article/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">这是一篇模板文章</div>
       <i class="icon-circle-right"></i>
     </a>
   
