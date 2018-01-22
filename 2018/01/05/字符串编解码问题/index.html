@@ -15,7 +15,7 @@
 <meta property="og:url" content="//1to3.top/2018/01/05/字符串编解码问题/index.html">
 <meta property="og:site_name" content="MD-blog">
 <meta property="og:description" content="了解字符串的编解码方式，在内存操作和网络I/O中都有可能用到">
-<meta property="og:updated_time" content="2018-01-22T14:52:52.965Z">
+<meta property="og:updated_time" content="2018-01-22T14:57:52.125Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="字符串编解码问题">
 <meta name="twitter:description" content="了解字符串的编解码方式，在内存操作和网络I/O中都有可能用到">
@@ -200,13 +200,14 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>字符串编解码的代码：</p>
+        <p>字符串编解码的代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String s = <span class="string">"要被编码的字符串"</span>;</span><br><span class="line">//通过getByte（）方法进行编码，并制定编码格式</span><br><span class="line">byte[] b = s.getBytes(<span class="string">"UTF-8"</span>);</span><br><span class="line">//通过String（byte[] byte, Charset charset)进行解码成字符串</span><br><span class="line">String n = new String(b,<span class="string">"UTF-8"</span>);</span><br></pre></td></tr></table></figure></p>
 <pre><code>&gt; 1.  String s = &quot;要被编码的字符串&quot;;
 &gt; 2.  //通过getByte（）方法进行编码，并制定编码格式
 &gt; 3.  byte[] b = s.getBytes(&quot;UTF-8&quot;);
 &gt; 4.  //通过String（byte[] byte, Charset charset)进行解码成字符串
 &gt; 5.  String n = new String(b,&quot;UTF-8&quot;);
 </code></pre><p>char[]和byte[]的编解码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Charset charset = Charset.foName(<span class="string">"UTF-8"</span>);</span><br><span class="line">//Charset的encode与decode方法</span><br><span class="line">ByteBuffer byteBuffer = charset.encode(<span class="string">"string"</span>);</span><br><span class="line">CharBuffer charBuffer = charset.decode(byteBuffer);</span><br></pre></td></tr></table></figure>
 <pre><code>&gt;1. Charset charset = Charset.foName(&quot;UTF-8&quot;);
 &gt;1. //Charset的encode与decode方法
 &gt;1. ByteBuffer byteBuffer = charset.encode(&quot;string&quot;);
