@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//1to3.top">
-  <title>test | MD-blog</title>
+  <title>SQL语句学习笔记 | MD-blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="测试">
-<meta name="keywords" content="test">
+  <meta name="description" content="SQL语句进行数据库操作。">
+<meta name="keywords" content="SQL,MYSQL，索引，查询">
 <meta property="og:type" content="article">
-<meta property="og:title" content="test">
+<meta property="og:title" content="SQL语句学习笔记">
 <meta property="og:url" content="//1to3.top/2018/01/22/test/index.html">
 <meta property="og:site_name" content="MD-blog">
-<meta property="og:description" content="测试">
-<meta property="og:updated_time" content="2018-01-22T15:06:57.302Z">
+<meta property="og:description" content="SQL语句进行数据库操作。">
+<meta property="og:updated_time" content="2018-01-22T15:53:42.483Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="test">
-<meta name="twitter:description" content="测试">
+<meta name="twitter:title" content="SQL语句学习笔记">
+<meta name="twitter:description" content="SQL语句进行数据库操作。">
   
     <link rel="alternative" href="/atom.xml" title="MD-blog" type="application/atom+xml">
   
@@ -187,7 +187,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      test
+      SQL语句学习笔记
     </h1>
   
 
@@ -200,7 +200,31 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>测试的</p>
+        <p><em>SQL语句的学习是为了对数据库操作，加深了对Mysql的认识。</em><br>这次学习SQL语句是在<a href="https://www.w3cschool.cn/sql/" target="_blank" rel="noopener">W3C.school.cn</a>上进行的学习。</p>
+<p>SQL语句并不复杂，但也需要记住较多语法规则和函数，这次先记录下几个知识点。</p>
+<ul>
+<li style="list-style: none"><input type="checkbox" checked> ALTER TABLE</li>
+<li style="list-style: none"><input type="checkbox" checked> 索引 </li>
+<li style="list-style: none"><input type="checkbox" checked> 子查询</li>
+<li style="list-style: none"><input type="checkbox" checked> 事务</li>
+<li style="list-style: none"><input type="checkbox" checked> 自增 和 LAST_INSERT_ID</li>
+</ul>
+<h3 id="1-ALTER-TABLE"><a href="#1-ALTER-TABLE" class="headerlink" title="1. ALTER TABLE"></a>1. ALTER TABLE</h3><p>当我们需要修改数据表名或者修改数据表字段时，就需要使用到MySQL ALTER命令。<br>详细内容：<a href="https://www.w3cschool.cn/sql/5so61oz4.html" target="_blank" rel="noopener">ALTER TABLE</a></p>
+<p><strong>删除，添加或修改表字段</strong><br>删除：<code>mysql&gt; ALTER TABLE testalter_tbl  DROP i;</code><br>—– 如果数据表中只剩余一个字段则无法使用DROP来删除字段。</p>
+<p>添加：<br><code>mysql&gt; ALTER TABLE testalter_tbl ADD i INT FIRST;
+mysql&gt; ALTER TABLE testalter_tbl ADD i INT AFTER columnname;</code></p>
+<p>修改：<br><code>mysql&gt; ALTER TABLE testalter_tbl MODIFY c CHAR(10);
+mysql&gt; ALTER TABLE testalter_tbl CHANGE i j BIGINT;
+mysql&gt; ALTER TABLE testalter_tbl CHANGE j j INT;</code></p>
+<p>ALTER TABLE 对 Null 值和默认值的影响:<br><code>mysql&gt; ALTER TABLE testalter_tbl 
+    -&gt; MODIFY j BIGINT NOT NULL DEFAULT 100;</code></p>
+<h3 id="2-索引"><a href="#2-索引" class="headerlink" title="2. 索引"></a>2. 索引</h3><p>索引是一种特殊的查询表，可以被数据库搜索引擎用来加速数据的检索。简单说来，索引就是指向表中数据的指针。<br>你可以为频繁被查询的字段建立索引，这样可以加快查询效率，提升性能。但是索引也有坏处：索引能够提高SELECT查询和WHERE子句的速度，但是却降低了包含UPDATE 语句或INSERT语句的数据输入过程的速度。索引的创建与删除不会对表中的数据产生影响。</p>
+<p>CREATE INDEX命令的基本语法如下：<br><code>CREATE INDEX index_name ON table_name;</code></p>
+<p>单列索引：<br>单列索引基于单一的字段创建，其基本语法如下所示：<br><code>CREATE INDEX index_name ON table_name (column_name);</code></p>
+<p>唯一索引：<br>唯一索引不止用于提升查询性能，还用于保证数据完整性。唯一索引不允许向表中插入任何重复值。其基本语法如下所示：<br><code>CREATE UNIQUE INDEX index_name on table_name (column_name);</code></p>
+<p>聚簇索引：<br>聚簇索引在表中两个或更多的列的基础上建立。其基本语法如下所示：<br><code>CREATE INDEX index_name on table_name (column1, column2);</code><br>创建单列索引还是聚簇索引，要看每次查询中，哪些列在作为过滤条件的 WHERE 子句中最常出现。<br>如果只需要一列，那么就应当创建单列索引。如果作为过滤条件的 WHERE 子句用到了两个或者更多的列，那么聚簇索引就是最好的选择。</p>
+<p>隐式索引：<br>隐式索引由数据库服务器在创建某些对象的时候自动生成。例如，对于主键约束和唯一约束，数据库服务器就会自动创建索引。</p>
+<p>DROP INDEX 命令：<br>索引可以用 SQL DROP 命令删除。删除索引时应当特别小心，数据库的性能可能会因此而降低或者提高。<br>其基本语法如下：<br><code>DROP INDEX index_name;</code></p>
 
       
 
@@ -245,13 +269,28 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">test</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SQL</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MYSQL</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Hexo//" class="article-tag-list-link color5">Hexo</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -460,7 +499,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">test</a>
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MYSQL</a>
               </li>
              
               <li class="article-tag-list-item">
