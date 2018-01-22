@@ -177,6 +177,80 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-test" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/22/test/">test</a>
+    </h1>
+  
+
+        
+        <a href="/2018/01/22/test/" class="archive-article-date">
+  	<time datetime="2018-01-22T14:39:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>测试的</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">test</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/01/22/test/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-字符串编解码问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -198,18 +272,9 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p>字符串编解码的代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String s = <span class="string">"要被编码的字符串"</span>;</span><br><span class="line">//通过getByte（）方法进行编码，并制定编码格式</span><br><span class="line">byte[] b = s.getBytes(<span class="string">"UTF-8"</span>);</span><br><span class="line">//通过String（byte[] byte, Charset charset)进行解码成字符串</span><br><span class="line">String n = new String(b,<span class="string">"UTF-8"</span>);</span><br></pre></td></tr></table></figure></p>
-<pre><code>&gt; 1.  String s = &quot;要被编码的字符串&quot;;
-&gt; 2.  //通过getByte（）方法进行编码，并制定编码格式
-&gt; 3.  byte[] b = s.getBytes(&quot;UTF-8&quot;);
-&gt; 4.  //通过String（byte[] byte, Charset charset)进行解码成字符串
-&gt; 5.  String n = new String(b,&quot;UTF-8&quot;);
-</code></pre><p>char[]和byte[]的编解码：</p>
+<p>char[]和byte[]的编解码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Charset charset = Charset.foName(<span class="string">"UTF-8"</span>);</span><br><span class="line">//Charset的encode与decode方法</span><br><span class="line">ByteBuffer byteBuffer = charset.encode(<span class="string">"string"</span>);</span><br><span class="line">CharBuffer charBuffer = charset.decode(byteBuffer);</span><br></pre></td></tr></table></figure>
-<pre><code>&gt;1. Charset charset = Charset.foName(&quot;UTF-8&quot;);
-&gt;1. //Charset的encode与decode方法
-&gt;1. ByteBuffer byteBuffer = charset.encode(&quot;string&quot;);
-&gt;1. CharBuffer charBuffer = charset.decode(byteBuffer);
-</code></pre><p><strong>参考文献</strong>：<br> &emsp;&emsp;深入分析Java Web技术内幕3.2.2   许令波著 电子工业出版社</p>
+<p><strong>参考文献</strong>：<br> &emsp;&emsp;深入分析Java Web技术内幕3.2.2   许令波著 电子工业出版社</p>
 
       
 
@@ -679,6 +744,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">测试，模板</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">test</a>
               </li>
              
               <li class="article-tag-list-item">
