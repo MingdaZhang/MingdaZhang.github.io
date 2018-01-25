@@ -198,7 +198,7 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p><em>SQL语句的学习是为了对数据库操作，加深了对Mysql的认识。</em><br>这次学习SQL语句是在<a href="https://www.w3cschool.cn/sql/" target="_blank" rel="noopener">W3C.school.cn</a>上进行的学习。</p>
-<p>SQL语句并不复杂，但也需要记住较多语法规则和函数，这次先记录下几个知识点。</p>
+<p>SQL语句并不复杂，但也需要记住较多语法规则和函数，这次先记录下几个知识点。<br>&lt;%- toc(page.content) %&gt;</p>
 <p>[TOC]</p>
 <ul>
 <li style="list-style: none"><input type="checkbox" checked> ALTER TABLE</li>
@@ -207,12 +207,12 @@ var _hmt = _hmt || [];
 <li style="list-style: none"><input type="checkbox" checked> 事务</li>
 <li style="list-style: none"><input type="checkbox" checked> SQL  使用序列（自增 和 LAST_INSERT_ID函数）</li>
 </ul>
-<h3 id="1-ALTER-TABLE"><a href="#1-ALTER-TABLE" class="headerlink" title="1. ALTER TABLE"></a>1. ALTER TABLE</h3><p>当我们需要修改数据表名或者修改数据表字段时，就需要使用到MySQL ALTER命令。<br>详细内容：<a href="https://www.w3cschool.cn/sql/5so61oz4.html" target="_blank" rel="noopener">ALTER TABLE</a></p>
+<h3><span id="1-alter-table">1. ALTER TABLE</span></h3><p>当我们需要修改数据表名或者修改数据表字段时，就需要使用到MySQL ALTER命令。<br>详细内容：<a href="https://www.w3cschool.cn/sql/5so61oz4.html" target="_blank" rel="noopener">ALTER TABLE</a></p>
 <p><strong>删除，添加或修改表字段</strong><br>删除：<code>mysql&gt; ALTER TABLE testalter_tbl  DROP i;</code><br>—– 如果数据表中只剩余一个字段则无法使用DROP来删除字段。</p>
 <p>添加：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> testalter_tbl <span class="keyword">ADD</span> i <span class="built_in">INT</span> <span class="keyword">FIRST</span>;</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> testalter_tbl <span class="keyword">ADD</span> i <span class="built_in">INT</span> <span class="keyword">AFTER</span> columnname;</span><br></pre></td></tr></table></figure></p>
 <p>修改：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> testalter_tbl <span class="keyword">MODIFY</span> c <span class="built_in">CHAR</span>(<span class="number">10</span>);</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> testalter_tbl <span class="keyword">CHANGE</span> i j <span class="built_in">BIGINT</span>;</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> testalter_tbl <span class="keyword">CHANGE</span> j j <span class="built_in">INT</span>;</span><br></pre></td></tr></table></figure></p>
 <p>ALTER TABLE 对 Null 值和默认值的影响:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> testalter_tbl </span><br><span class="line"><span class="keyword">MODIFY</span> j <span class="built_in">BIGINT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">100</span>;</span><br></pre></td></tr></table></figure></p>
-<h3 id="2-索引"><a href="#2-索引" class="headerlink" title="2. 索引"></a>2. 索引</h3><p>索引是一种特殊的查询表，可以被数据库搜索引擎用来加速数据的检索。简单说来，索引就是指向表中数据的指针。<br>你可以为频繁被查询的字段建立索引，这样可以加快查询效率，提升性能。但是索引也有坏处：索引能够提高SELECT查询和WHERE子句的速度，但是却降低了包含UPDATE 语句或INSERT语句的数据输入过程的速度。索引的创建与删除不会对表中的数据产生影响。</p>
+<h3><span id="2-索引">2. 索引</span></h3><p>索引是一种特殊的查询表，可以被数据库搜索引擎用来加速数据的检索。简单说来，索引就是指向表中数据的指针。<br>你可以为频繁被查询的字段建立索引，这样可以加快查询效率，提升性能。但是索引也有坏处：索引能够提高SELECT查询和WHERE子句的速度，但是却降低了包含UPDATE 语句或INSERT语句的数据输入过程的速度。索引的创建与删除不会对表中的数据产生影响。</p>
 <p>CREATE INDEX命令的基本语法如下：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">INDEX</span> index_name <span class="keyword">ON</span> table_name;</span><br></pre></td></tr></table></figure></p>
 <p>单列索引：<br>单列索引基于单一的字段创建，其基本语法如下所示：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">INDEX</span> index_name <span class="keyword">ON</span> table_name (column_name);</span><br></pre></td></tr></table></figure></p>
 <p>唯一索引：<br>唯一索引不止用于提升查询性能，还用于保证数据完整性。唯一索引不允许向表中插入任何重复值。其基本语法如下所示：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">UNIQUE</span> <span class="keyword">INDEX</span> index_name <span class="keyword">on</span> table_name (column_name);</span><br></pre></td></tr></table></figure></p>
@@ -220,8 +220,7 @@ var _hmt = _hmt || [];
 <p>创建单列索引还是聚簇索引，要看每次查询中，哪些列在作为过滤条件的 WHERE 子句中最常出现。<br>如果只需要一列，那么就应当创建单列索引。如果作为过滤条件的 WHERE 子句用到了两个或者更多的列，那么聚簇索引就是最好的选择。</p>
 <p>隐式索引：<br>隐式索引由数据库服务器在创建某些对象的时候自动生成。例如，对于主键约束和唯一约束，数据库服务器就会自动创建索引。</p>
 <p>DROP INDEX 命令：<br>索引可以用 SQL DROP 命令删除。删除索引时应当特别小心，数据库的性能可能会因此而降低或者提高。<br>其基本语法如下：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">INDEX</span> index_name;</span><br></pre></td></tr></table></figure></p>
-<p>###3.子查询</p>
-<p>子查询（Sub Query）或者说内查询（Inner Query），也可以称作嵌套查询（Nested Query），是一种嵌套在其他 SQL 查询的 WHERE 子句中的查询。</p>
+<p>###3.子查询<br>子查询（Sub Query）或者说内查询（Inner Query），也可以称作嵌套查询（Nested Query），是一种嵌套在其他 SQL 查询的 WHERE 子句中的查询。</p>
 <p><strong>使用子查询必须遵循以下几个规则：</strong></p>
 <ul>
 <li>子查询必须括在圆括号中。</li>
@@ -233,8 +232,7 @@ var _hmt = _hmt || [];
 <li>BETWEEN 操作符不能同子查询一起使用，但是 BETWEEN 操作符可以用在子查询中。</li>
 </ul>
 <p>例：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column_name [, column_name ]</span><br><span class="line"><span class="keyword">FROM</span>   table1 [, table2 ]</span><br><span class="line"><span class="keyword">WHERE</span>  column_name <span class="keyword">OPERATOR</span></span><br><span class="line">      (<span class="keyword">SELECT</span> column_name [, column_name ]</span><br><span class="line">      <span class="keyword">FROM</span> table1 [, table2 ]</span><br><span class="line">      [<span class="keyword">WHERE</span>])</span><br></pre></td></tr></table></figure></p>
-<p>###4.事务</p>
-<p>事务是在数据库上按照一定的逻辑顺序执行的任务序列，既可以由用户手动执行，也可以由某种数据库程序自动执行。<br>这和spring的事务处理类似，因此mybatis这种框架的事务归根到底也是包装SQL的事务语句进行操作。</p>
+<p>###4.事务<br>事务是在数据库上按照一定的逻辑顺序执行的任务序列，既可以由用户手动执行，也可以由某种数据库程序自动执行。<br>这和spring的事务处理类似，因此mybatis这种框架的事务归根到底也是包装SQL的事务语句进行操作。</p>
 <p><strong>事务控制：</strong></p>
 <p>有四个命令用于控制事务：</p>
 <ul>
@@ -337,9 +335,9 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>字符串编解码的代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String s = <span class="string">"要被编码的字符串"</span>;</span><br><span class="line">//通过getByte（）方法进行编码，并制定编码格式</span><br><span class="line">byte[] b = s.getBytes(<span class="string">"UTF-8"</span>);</span><br><span class="line">//通过String（byte[] byte, Charset charset)进行解码成字符串</span><br><span class="line">String n = new String(b,<span class="string">"UTF-8"</span>);</span><br></pre></td></tr></table></figure></p>
+        <p>字符串编解码的代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String s = <span class="string">"要被编码的字符串"</span>;</span><br><span class="line"><span class="comment">//通过getByte（）方法进行编码，并制定编码格式</span></span><br><span class="line"><span class="keyword">byte</span>[] b = s.getBytes(<span class="string">"UTF-8"</span>);</span><br><span class="line"><span class="comment">//通过String（byte[] byte, Charset charset)进行解码成字符串</span></span><br><span class="line">String n = <span class="keyword">new</span> String(b,<span class="string">"UTF-8"</span>);</span><br></pre></td></tr></table></figure></p>
 <p>char[]和byte[]的编解码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Charset charset = Charset.foName(<span class="string">"UTF-8"</span>);</span><br><span class="line">//Charset的encode与decode方法</span><br><span class="line">ByteBuffer byteBuffer = charset.encode(<span class="string">"string"</span>);</span><br><span class="line">CharBuffer charBuffer = charset.decode(byteBuffer);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Charset charset = Charset.foName(<span class="string">"UTF-8"</span>);</span><br><span class="line"><span class="comment">//Charset的encode与decode方法</span></span><br><span class="line">ByteBuffer byteBuffer = charset.encode(<span class="string">"string"</span>);</span><br><span class="line">CharBuffer charBuffer = charset.decode(byteBuffer);</span><br></pre></td></tr></table></figure>
 <p><strong>参考文献</strong>：<br> &emsp;&emsp;深入分析Java Web技术内幕3.2.2   许令波著 电子工业出版社</p>
 
       

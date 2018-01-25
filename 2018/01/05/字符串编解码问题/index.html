@@ -15,7 +15,7 @@
 <meta property="og:url" content="//1to3.top/2018/01/05/字符串编解码问题/index.html">
 <meta property="og:site_name" content="MD-blog">
 <meta property="og:description" content="了解字符串的编解码方式，在内存操作和网络I/O中都有可能用到">
-<meta property="og:updated_time" content="2018-01-22T15:06:35.519Z">
+<meta property="og:updated_time" content="2018-01-25T22:12:37.756Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="字符串编解码问题">
 <meta name="twitter:description" content="了解字符串的编解码方式，在内存操作和网络I/O中都有可能用到">
@@ -200,9 +200,9 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>字符串编解码的代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String s = <span class="string">"要被编码的字符串"</span>;</span><br><span class="line">//通过getByte（）方法进行编码，并制定编码格式</span><br><span class="line">byte[] b = s.getBytes(<span class="string">"UTF-8"</span>);</span><br><span class="line">//通过String（byte[] byte, Charset charset)进行解码成字符串</span><br><span class="line">String n = new String(b,<span class="string">"UTF-8"</span>);</span><br></pre></td></tr></table></figure></p>
+        <p>字符串编解码的代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String s = <span class="string">"要被编码的字符串"</span>;</span><br><span class="line"><span class="comment">//通过getByte（）方法进行编码，并制定编码格式</span></span><br><span class="line"><span class="keyword">byte</span>[] b = s.getBytes(<span class="string">"UTF-8"</span>);</span><br><span class="line"><span class="comment">//通过String（byte[] byte, Charset charset)进行解码成字符串</span></span><br><span class="line">String n = <span class="keyword">new</span> String(b,<span class="string">"UTF-8"</span>);</span><br></pre></td></tr></table></figure></p>
 <p>char[]和byte[]的编解码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Charset charset = Charset.foName(<span class="string">"UTF-8"</span>);</span><br><span class="line">//Charset的encode与decode方法</span><br><span class="line">ByteBuffer byteBuffer = charset.encode(<span class="string">"string"</span>);</span><br><span class="line">CharBuffer charBuffer = charset.decode(byteBuffer);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Charset charset = Charset.foName(<span class="string">"UTF-8"</span>);</span><br><span class="line"><span class="comment">//Charset的encode与decode方法</span></span><br><span class="line">ByteBuffer byteBuffer = charset.encode(<span class="string">"string"</span>);</span><br><span class="line">CharBuffer charBuffer = charset.decode(byteBuffer);</span><br></pre></td></tr></table></figure>
 <p><strong>参考文献</strong>：<br> &emsp;&emsp;深入分析Java Web技术内幕3.2.2   许令波著 电子工业出版社</p>
 
       
