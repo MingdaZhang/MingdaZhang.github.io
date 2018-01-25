@@ -220,7 +220,7 @@ var _hmt = _hmt || [];
 <p>创建单列索引还是聚簇索引，要看每次查询中，哪些列在作为过滤条件的 WHERE 子句中最常出现。<br>如果只需要一列，那么就应当创建单列索引。如果作为过滤条件的 WHERE 子句用到了两个或者更多的列，那么聚簇索引就是最好的选择。</p>
 <p>隐式索引：<br>隐式索引由数据库服务器在创建某些对象的时候自动生成。例如，对于主键约束和唯一约束，数据库服务器就会自动创建索引。</p>
 <p>DROP INDEX 命令：<br>索引可以用 SQL DROP 命令删除。删除索引时应当特别小心，数据库的性能可能会因此而降低或者提高。<br>其基本语法如下：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">INDEX</span> index_name;</span><br></pre></td></tr></table></figure></p>
-<p>###3.子查询<br>子查询（Sub Query）或者说内查询（Inner Query），也可以称作嵌套查询（Nested Query），是一种嵌套在其他 SQL 查询的 WHERE 子句中的查询。</p>
+<h3><span id="3子查询">3.子查询</span></h3><p>子查询（Sub Query）或者说内查询（Inner Query），也可以称作嵌套查询（Nested Query），是一种嵌套在其他 SQL 查询的 WHERE 子句中的查询。</p>
 <p><strong>使用子查询必须遵循以下几个规则：</strong></p>
 <ul>
 <li>子查询必须括在圆括号中。</li>
@@ -232,7 +232,7 @@ var _hmt = _hmt || [];
 <li>BETWEEN 操作符不能同子查询一起使用，但是 BETWEEN 操作符可以用在子查询中。</li>
 </ul>
 <p>例：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column_name [, column_name ]</span><br><span class="line"><span class="keyword">FROM</span>   table1 [, table2 ]</span><br><span class="line"><span class="keyword">WHERE</span>  column_name <span class="keyword">OPERATOR</span></span><br><span class="line">      (<span class="keyword">SELECT</span> column_name [, column_name ]</span><br><span class="line">      <span class="keyword">FROM</span> table1 [, table2 ]</span><br><span class="line">      [<span class="keyword">WHERE</span>])</span><br></pre></td></tr></table></figure></p>
-<p>###4.事务<br>事务是在数据库上按照一定的逻辑顺序执行的任务序列，既可以由用户手动执行，也可以由某种数据库程序自动执行。<br>这和spring的事务处理类似，因此mybatis这种框架的事务归根到底也是包装SQL的事务语句进行操作。</p>
+<h3><span id="4事务">4.事务</span></h3><p>事务是在数据库上按照一定的逻辑顺序执行的任务序列，既可以由用户手动执行，也可以由某种数据库程序自动执行。<br>这和spring的事务处理类似，因此mybatis这种框架的事务归根到底也是包装SQL的事务语句进行操作。</p>
 <p><strong>事务控制：</strong></p>
 <p>有四个命令用于控制事务：</p>
 <ul>
@@ -313,6 +313,8 @@ var _hmt = _hmt || [];
 
 
 
+
+	<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text"><span id="1-alter-table">1. ALTER TABLE</span></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text"><span id="2-&#x7D22;&#x5F15;">2. &#x7D22;&#x5F15;</span></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text"><span id="3&#x5B50;&#x67E5;&#x8BE2;">3.&#x5B50;&#x67E5;&#x8BE2;</span></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text"><span id="4&#x4E8B;&#x52A1;">4.&#x4E8B;&#x52A1;</span></span></a></li></ol>
  
 
   
